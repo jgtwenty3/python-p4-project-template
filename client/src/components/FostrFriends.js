@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import fostersData from "./db.json";
 import NavBar from "./NavBar.js";
 
 function FosterFriends() {

@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import dogsData from "./db.json";
 import './App.css';
 
-function DogContainer() {
+function AnimalContainer() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [animals, setAnimals] = useState([]);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const filteredDogs = dogsData.dogs.filter((dog) =>
-    dog.name.toLowerCase().includes(searchQuery.toLowerCase())
+  useEffect(()=> {
+    fetch('/animals')
+    .then(res => res.json())
+    .then(data => setAnimals(data))
+    .catch(error => console.log('error'))
+  })
+
+  const filteredAnimals = animals.filter((animal) =>
+    animal.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -33,17 +40,17 @@ function DogContainer() {
           </tr>
         </thead>
         <tbody>
-          {filteredDogs.map((dog) => (
+          {filteredAnimals.map((animal) => (
             <tr
               className="table-row"
-              key={dog.id}
+              key={animal.id}
             >
               <td>
-                <NavLink to={`/dogs/${dog.id}`}>{dog.name}</NavLink>
+                <NavLink to={`/animals/${animal.id}`}>{animal.name}</NavLink>
               </td>
-              <td>{dog.arrival}</td>
-              <td>{dog.age}</td>
-              <td>{dog.sex}</td>
+              <td>{animal.arrival_date}</td>
+              <td>{animal.age}</td>
+              <td>{animal.sex}</td>
             </tr>
           ))}
         </tbody>
@@ -52,4 +59,4 @@ function DogContainer() {
   );
 }
 
-export default DogContainer;
+export default AnimalContainer;

@@ -1,61 +1,52 @@
 import React, { useState } from "react";
-import dogsData from "./db.json";
 import NavBar from "./NavBar.js";
 import './App.css';
 
 function AddAnimalForm() {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-  const [arrival, setArrival] = useState("");
+  const [arrivalDate, setArrivalDate] = useState("");
+  const [species, setSpecies] = useState("");
   const [age, setAge] = useState("");
   const [sex, setSex] = useState("");
+  const [breed, setBreed] = useState("");
   const [color, setColor] = useState("");
-  const [vaccinated, setVaccinated] = useState("");
+  const [weight, setWeight] = useState("");
+  const [description, setDesciption] = useState("");
+  const [vaxStatus, setVaxstatus] = useState("");
+  const [specialNeeds, setSpecialNeeds] = useState("");
+  const [adoptionStatus, setAdoptionStatus] = useState("");
+  const [destination, setDestination] = useState("");
 
-  const [newDogData, setNewDogData] = useState({
-  
-    name: "",
-    image: "",
-    arrival: "",
-    age: "",
-    sex: "",
-    color: "",
-    vaccinated: ""
-  });
-  
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const newDog = {
-      ...newDogData
+    const newAnimal = {
+      name, 
+      image, 
+      arrivalDate,
+      species,
+      age,
+      sex,
+      breed,
+      color, 
+      weight, 
+      description,
+      vaxStatus,
+      specialNeeds,
+      adoptionStatus,
+      destination
     };
-    console.log(JSON.stringify(newDog));
-
-    const configObj = {
-      method: 'POST',
+   
+    fetch("/animals", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newDog),
-    };
+      body: JSON.stringify(newAnimal),
+    })
 
-    fetch("http://localhost:3000/dogs",configObj) 
-    .then(res => res.json())
-    .then(newDog => {
-        dogsData.dogs.push(newDog);
-
-        setNewDogData({
-          name: "",
-          image: "",
-          arrival: "",
-          age: "",
-          sex: "",
-          color: "",
-          vaccinated: ""
-        });
-      });
   };
 
 
@@ -88,8 +79,15 @@ function AddAnimalForm() {
             <input className ="form-container input"
               type="text"
               id="arrival"
-              value={arrival}
-              onChange={(e) => setArrival(e.target.value)}
+              value={arrivalDate}
+              onChange={(e) => setArrivalDate(e.target.value)}
+            />
+            <label className = ".form-container label" htmlFor="species">Species:</label>
+            <input className ="form-container input"
+              type="text"
+              id="species"
+              value={species}
+              onChange={(e) => setSpecies(e.target.value)}
             />
     
             <label className = ".form-container label" htmlFor="age">Age:</label>
@@ -107,6 +105,13 @@ function AddAnimalForm() {
               value={sex}
               onChange={(e) => setSex(e.target.value)}
             />
+            <label className = ".form-container label" htmlFor="breed">Breed:</label>
+            <input className ="form-container input"
+              type="text"
+              id="breed"
+              value={breed}
+              onChange={(e) => setBreed(e.target.value)}
+            />
     
             <label className = ".form-container label" htmlFor="color">Color:</label>
             <input className ="form-container input"
@@ -115,16 +120,52 @@ function AddAnimalForm() {
               value={color}
               onChange={(e) => setColor(e.target.value)}
             />
+            <label className = ".form-container label" htmlFor="weight">Weight:</label>
+            <input className ="form-container input"
+              type="text"
+              id="weight"
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+            />
+            
+            <label className = ".form-container label" htmlFor="description">Description:</label>
+            <input className ="form-container input"
+              type="text"
+              id="description"
+              value={description}
+              onChange={(e) => setDesciption(e.target.value)}
+            />
     
             <label className = ".form-container label" htmlFor="vaccinated">Vaccinated:</label>
             <input className ="form-container input"
               type="text"
               id="vaccinated"
-              value={vaccinated}
-              onChange={(e) => setVaccinated(e.target.value)}
+              value={vaxStatus}
+              onChange={(e) => setVaxstatus(e.target.value)}
+            />
+            <label className = ".form-container label" htmlFor="specialNeeds">Special Needs:</label>
+            <input className ="form-container input"
+              type="text"
+              id="specialNeeds"
+              value={specialNeeds}
+              onChange={(e) => setSpecialNeeds(e.target.value)}
+            />
+            <label className = ".form-container label" htmlFor="adoptionStatus">AdoptionStatus:</label>
+            <input className ="form-container input"
+              type="text"
+              id="adoptionStatus"
+              value={adoptionStatus}
+              onChange={(e) => setAdoptionStatus(e.target.value)}
+            />
+            <label className = ".form-container label" htmlFor="destination">Destination:</label>
+            <input className ="form-container input"
+              type="text"
+              id="destination"
+              value={destination}
+              onChange={(e) => setDestination(e.target.value)}
             />
     
-            <button type="submit">Add Dog</button>
+            <button type="submit">Add Animal</button>
             
           </form>
         </div>
