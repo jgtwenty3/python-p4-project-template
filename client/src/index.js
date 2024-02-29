@@ -9,6 +9,11 @@ import ShelterCard from "./components/ShelterCard.js";
 import SheltersContainer from './components/SheltersContainer.js'
 import "./index.css";
 import AddShelterForm from "./components/AddShelterForm.js";
+import Login from "./components/Login.js";
+import Signup from "./components/Signup.js";
+
+
+
 
 export default function Launch() {
   return (
@@ -35,6 +40,12 @@ export default function Launch() {
         <Route path="/shelters/:id">
           <ShelterCard />
         </Route>
+        <Route path="/login">
+          <Login/>
+        </Route> 
+        <Route path="/signup">
+          <Signup/>
+        </Route> 
       </Switch>
     </BrowserRouter>
   );

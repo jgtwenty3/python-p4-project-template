@@ -1,205 +1,213 @@
 .App {
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-  }
-  
-  .App-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-    width: 300px;
-    margin: 0 auto;
-  }
-  
-  .App-header {
-    background-color: #ffffff;
-    min-height: 10vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  .navbar-list {
-    display: flex;
-    justify-content: space-around;
-    list-style-type: none;
-    padding: 10px;
-    margin: 0px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    margin-bottom: 50px;
-    background-color: #84d5f2;
-    margin-left: 50px;
-    margin-right: 50px;
-    border-radius: 10px;
-  }
-  .navbar-item {
-    background-color: white; /* Set background color to white */
-    padding: 10px 20px;
-    border-radius: 20px; /* Increase border-radius for a rounded button effect */
-    color: #84d5f2; /* Set text color to the desired blue */
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
 }
-  
-  .table-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin-top: 100px;
-    font-family: 'Courier New', Courier, monospace;
-    
-  }
-  .search-input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    margin-bottom: 20px;
-  }
-  
-  
-  table {
-    width: 80%;
-    margin: 0 auto;
-    
-  }
-  
-  .table-row {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color:#84d5f2;
-    font-family: 'Courier New', Courier, monospace;
-    
-  }
-  
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    max-width: 500px;
-    width: 80%;
-    margin:0;
-    text-align: center;
-    margin-left: auto;
-    margin-right:auto;
-    color: rgb(13, 82, 156);
-  }
-  
-  .form-container label { 
-    margin-bottom: 5px;
-    
-  }
-  
-  .form-container input {
-    width: 300px;
-    height: 20px;
-    margin-bottom: 1px;
-    padding: 5px;
-  }
-  
-  .form-container button {
-    background-color: #ffffff;
-    color: rgb(13, 82, 156);
-    border: 1px solid #84d5f2;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
-    display: center;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .form-container button:hover {
-    background-color: #45a8cb;
-  }
-  
-  .table-row{
-    margin-top: 10px;
-    margin-bottom:10px;
-  }
-  
-  .login-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .animal-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 3px solid #84d5f2;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    margin-left: 100px;
-    margin-right: 100px;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: white;
-  }
-  
-  .animal-card h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    font-family: 'Courier New', Courier, monospace;
-  }
-  
-  .animal-card img {
-    width: 65%;
-    height: 300px;
-    object-fit: contain;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .animal-card p {
-    margin-bottom: 5px;
-    background-color: white;
-    font-family: 'Courier New', Courier, monospace;
-  }
-  
-  .animal-card.button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .animal-card.button {
-    background-color: #ffffff;
-    color: rgb(13, 82, 156);
-    border: 1px solid #84d5f2;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
-  }
-  
-  .animal-card.button:hover {
-    background-color: #45a8cb;
-  }
-  
-  .animal-card.edit-mode {
-    border: 3px solid #61dafb;
-  }
-  
-  .animal-card.edit-mode input {
-    background-color: #f2f2f2;
-  }
-  
-  .animal-card.edit-mode button {
-    background-color: #f2f2f2;
-    color: #61dafb;
-  }
-  
-  
+
+.App-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.App-header {
+  background-color: #ffffff;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 10px;
+  margin: 0px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  margin-bottom: 50px;
+  background-color: #84d5f2;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 10px;
+}
+
+.navbar-item {
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #84d5f2;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 100px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.search-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.table-row {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #84d5f2;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  max-width: 500px;
+  width: 80%;
+  margin: 0;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(13, 82, 156);
+}
+
+.form-container label {
+  margin-bottom: 5px;
+}
+
+.form-container input {
+  width: 300px;
+  height: 20px;
+  margin-bottom: 1px;
+  padding: 5px;
+}
+
+.form-container button {
+  background-color: #ffffff;
+  color: rgb(13, 82, 156);
+  border: 1px solid #84d5f2;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+  display: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form-container button:hover {
+  background-color: #45a8cb;
+}
+
+.table-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.animal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid #84d5f2;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-left: 100px;
+  margin-right: 100px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: white;
+}
+
+.animal-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.animal-card img {
+  width: 65%;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.animal-card p {
+  margin-bottom: 5px;
+  background-color: white;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center; /* Add this line to center-align the text */
+}
+
+
+.animal-card.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.animal-card.button {
+  background-color: #ffffff;
+  color: rgb(13, 82, 156);
+  border: 1px solid #84d5f2;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.animal-card.button:hover {
+  background-color: #45a8cb;
+}
+
+.animal-card.edit-mode {
+  border: 3px solid #61dafb;
+}
+
+.animal-card.edit-mode input {
+  background-color: #f2f2f2;
+}
+
+.animal-card.edit-mode button {
+  background-color: #f2f2f2;
+  color: #61dafb;
+}
+
+.animalcard-table tbody tr td {
+  text-align: center;
+}
+
+
+.animalcard-table td {
+  padding: 8px;
+}

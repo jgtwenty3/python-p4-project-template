@@ -1,9 +1,13 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
-#from flask_bcrypt import Bcrypt
+from flask_bcrypt import Bcrypt
 from sqlalchemy.ext.hybrid import hybrid_property
 
 from config import db
+
+bcrypt = Bcrypt()
+
+
 
 class User(db.Model, SerializerMixin):
     __tablename__= 'users'
@@ -25,10 +29,10 @@ class User(db.Model, SerializerMixin):
     def password_hash(self, new_password):
         """setter"""
         pass_hash = bcrypt.generate_password_hash(new_password.encode('utf-8'))
-        self.password_hash = pass_hash.decode('utf-8')
+        self._password_hash = pass_hash.decode('utf-8')
     
     def authenticate(self, password):
-        return bcrypt.check_password_hash(self._password_hash, password.encode('utf-8'))
+        return bcrypt.check_password_hash(self._password_hash, password.encode('utf-8')) if self._password_hash else False
 
     # Add relationships
     animals = db.relationship('Animal', back_populates='user')

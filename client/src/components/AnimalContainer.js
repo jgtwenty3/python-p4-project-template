@@ -34,7 +34,7 @@ function AnimalContainer() {
         onChange={handleSearchChange}
         className="search-input"
       />
-      <table classname = "animal-table"> 
+      <table className = "animal-table"> 
         <thead>
           <tr className="table-row">
             <th>Name</th>
@@ -52,7 +52,7 @@ function AnimalContainer() {
             <th>Microchip Number</th>
           </tr>
         </thead>
-        <tbody classname = "animal-table-body">
+        <tbody className = "animal-table-body">
           {filteredAnimals.map((animal) => (
             <tr
               className="table-row"

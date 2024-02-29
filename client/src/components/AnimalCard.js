@@ -84,25 +84,81 @@ function AnimalCard() {
       <header>
         <NavBar />
       </header>
-      <div className="animal-card">
+      <div className="animal-card"style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <h2 className="animal-card h2">{animal.name}</h2>
         <img className=".animal-card img" src={animal.image} alt={animal.name} />
-        <p className=".animal-card-p">Arrival: {animal.arrival}</p>
-        <p className=".animal-card-p">Age: {animal.age}</p>
-        <p className=".animal-card-p">Breed: {animal.breed}</p>
-        <p className=".animal-card-p">Sex: {animal.sex}</p>
-        <p className=".animal-card-p">Color: {animal.color}</p>
-        <p className=".animal-card-p">Weight: {animal.weight}</p>
-        <p className=".animal-card-p">Description: {animal.description}</p>
-        <p className=".animal-card-p">Rabies Shots Date: {animal.rabies}</p>
-        <p className=".animal-card-p">SNAP Shots Date: {animal.snap}</p>
-        <p className=".animal-card-p">DHPP Shots Date: {animal.dhpp}</p>
-        <p className = ".animal-card-p">Rescued By:{animal.rescuer}</p>
-        <p className = ".animal-card-p">Rescued From:{animal.rescuedfrom}</p>
-        <p className=".animal-card-p">Special Needs: {animal.specialneeds}</p>
-        <p className=".animal-card-p">Adoption Status: {animal.adoptionstatus}</p>
-        <p className=".animal-card-p">Destination: {animal.destination}</p>
-        <p className = ".animal-card-p">Microchip:{animal.microchip}</p>
+        <table className="animalcard-table">
+        <tbody>
+          <tr className="centered-table-row">
+            <td>Arrival Date:</td>
+            <td>{animal.arrival}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Age:</td>
+            <td>{animal.age}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Breed:</td>
+            <td>{animal.breed}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Sex:</td>
+            <td>{animal.sex}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Color:</td>
+            <td>{animal.color}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Weight:</td>
+            <td>{animal.weight}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Description:</td>
+            <td>{animal.description}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Rabies Shots Date:</td>
+            <td>{animal.rabies}</td>
+          </tr>
+          <tr lassName="centered-table-row">
+            <td>SNAP Shots Date:</td>
+            <td>{animal.snap}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>DHPP Shots Date:</td>
+            <td>{animal.dhpp}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Spayed/Neutered?:</td>
+            <td>{animal.spayneuter}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Microchip Number:</td>
+            <td>{animal.microchip}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Rescued By:</td>
+            <td>{animal.rescuer}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Rescued From:</td>
+            <td>{animal.rescuedfrom}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Special Needs:</td>
+            <td>{animal.specialneeds}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Adoption Status:</td>
+            <td>{animal.adoptionstatus}</td>
+          </tr>
+          <tr className="centered-table-row">
+            <td>Destination:</td>
+            <td>{animal.destination}</td>
+          </tr>
+        </tbody>
+      </table>
         {editMode ? (
           <form onSubmit={handleSubmit}>
             <label>

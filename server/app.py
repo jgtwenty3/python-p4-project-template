@@ -4,11 +4,14 @@
 
 # Remote library imports
 from flask import Flask, request, session
+from flask_bcrypt import Bcrypt
 # Local imports
 
 from config import app, db, migrate, api
 # Add your model imports
 from models import db, User, Shelter, Animal
+
+
 
 
 # Views go here!
@@ -17,22 +20,60 @@ from models import db, User, Shelter, Animal
 def home():
     return ''
 
-@app.route('/signup')
+@app.route('/signup', methods=['POST'])
 def signup():
-    pass
-@app.route('/login', methods = ['POST'])
+    json_data = request.get_json()
+
+    # Validate required fields
+    required_fields = ['username', 'password', 'email', 'usertype', 'phone', 'address']
+    for field in required_fields:
+        if field not in json_data:
+            return {'error': f'Missing required field: {field}'}, 400
+
+    # Validate usertype
+    valid_usertypes = ['user', 'facility_owner']
+    if json_data['usertype'] not in valid_usertypes:
+        return {'error': f'Invalid usertype. Must be one of: {", ".join(valid_usertypes)}'}, 400
+
+    # Create a new user instance
+    new_user = User(
+        username=json_data['username'],
+        password_hash=json_data['password'],  # Use password_hash instead of password
+        usertype=json_data['usertype'],
+        email=json_data['email'],
+        phone=json_data['phone'],
+        address=json_data['address'],
+    )
+
+    # Add the new user to the database
+    db.session.add(new_user)
+    db.session.commit()
+
+    return {'message': 'User registered successfully'}, 201
+
+
+@app.route('/login', methods=['POST'])
 def login():
     json_data = request.get_json()
 
-    user = User.query.filter(User.username == json_data.get('username')). first()
+    # Validate required fields
+    required_fields = ['username', 'password']
+    for field in required_fields:
+        if field not in json_data:
+            return {'error': f'Missing required field: {field}'}, 400
 
-    if not user: 
-        return {'error': 'user not found'}, 404
+    user = User.query.filter(User.username == json_data.get('username')).first()
+
+    if not user:
+        return {'error': 'User not found'}, 404
+
     if not user.authenticate(json_data.get('password')):
-        return {'error': 'invalild password'}, 401
-    
+        return {'error': 'Invalid password'}, 401
+
+    # Update session with user_id
     session['user_id'] = user.id
-    return user.to_dict(), 200
+
+    return {'message': 'Login Successful'}, 200
 
 @app.route('/logout', methods = ['DELETE'])
 def logout():
