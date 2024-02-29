@@ -20,9 +20,9 @@ if __name__ == '__main__':
             user = User(
                 username=fake.user_name(),
                 _password_hash=fake.password(),
-                user_type=rc(['admin', 'regular_user']),
+                usertype=rc(['admin', 'regular_user']),
                 email=fake.email(),
-                phone_number=fake.phone_number(),
+                phone=fake.phone_number(),
                 address=fake.address(),
             )
             db.session.add(user)
@@ -32,10 +32,10 @@ if __name__ == '__main__':
             shelter = Shelter(
                 user_id = randint(1,10),
                 name=fake.company(),
-                owner_name=fake.name(),
+                owner=fake.name(),
                 address=fake.address(),
                 email=fake.company_email(),
-                phone_number = fake.phone_number(),
+                phone = fake.phone_number(),
                 about = fake.sentence()
             )
             db.session.add(shelter)
@@ -53,7 +53,9 @@ if __name__ == '__main__':
             animal = Animal(
                 name=fake.first_name(),
                 image=image_url,
-                arrival_date=fake.date_this_decade(),
+                arrival=fake.date_this_decade(),
+                rescuer = fake.name(),
+                rescuedfrom = fake.address(),
                 species=species,
                 age=randint(1, 10),
                 sex=rc(['Male', 'Female']),
@@ -61,10 +63,14 @@ if __name__ == '__main__':
                 color=fake.color_name(),
                 weight=randint(1, 50),
                 description=fake.text(),
-                vaxstatus=rc(['Vaccinated', 'Not Vaccinated']),
-                special_needs=fake.sentence(),
-                adoption_status=rc(['Available', 'Adopted']),
+                rabies = fake.date(),
+                snap = fake.date(),
+                dhpp = fake.date(),
+                spayneuter = rc(['yes', 'no']),
+                specialneeds=fake.sentence(),
+                adoptionstatus=rc(["Available", "Adopted", "Fostr'd"]),
                 destination=fake.address(),
+                microchip = randint(1, 999999),
                 shelter_id=randint(1, Shelter.query.count()),  # Ensure there are shelters in the database
                 user_id=randint(1, User.query.count()),  # Ensure there are users in the database
             )

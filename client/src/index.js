@@ -1,28 +1,44 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import React from "react";
-
-
 import App from "./components/App.js";
 import AddAnimalForm from "./components/AddAnimalForm.js";
 import AnimalContainer from "./components/AnimalContainer.js";
-import FostrFriends from "./components/FostrFriends.js";
 import AnimalCard from "./components/AnimalCard.js";
+import ShelterCard from "./components/ShelterCard.js";
+import SheltersContainer from './components/SheltersContainer.js'
 import "./index.css";
+import AddShelterForm from "./components/AddShelterForm.js";
 
-const AppRouter = () => {
+export default function Launch() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/add-animal" element={<AddAnimalForm />} />
-        <Route path="/animals" element={<AnimalContainer />} />
-        <Route path="/fostr-friends" element={<FostrFriends />} />
-        <Route path="/animals/:id" element={<AnimalCard />} />
-      </Routes>
-    </Router>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact>
+          <App />
+        </Route>
+        <Route path="/add-animal">
+          <AddAnimalForm />
+        </Route>
+        <Route path="/add-shelter">
+          <AddShelterForm/>
+        </Route>
+        <Route path="/animals" exact>
+          <AnimalContainer />
+        </Route>
+        <Route path="/animals/:id">
+          <AnimalCard />
+        </Route>
+        <Route path="/shelters" exact >
+          <SheltersContainer />
+        </Route>
+        <Route path="/shelters/:id">
+          <ShelterCard />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
-};
+}
 
-// Render the AppRouter component
-const container = document.getElementById("root");
-ReactDOM.render(<AppRouter />, container);
+const root = document.getElementById("root");
+ReactDOM.render(<Launch />, root);

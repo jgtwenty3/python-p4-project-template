@@ -41,11 +41,11 @@
     border-radius: 10px;
   }
   .navbar-item {
-    background-color: #84d5f2;
+    background-color: white; /* Set background color to white */
     padding: 10px 20px;
-    border-radius: 5px;
-    color: rgb(255, 255, 255);
-  }
+    border-radius: 20px; /* Increase border-radius for a rounded button effect */
+    color: #84d5f2; /* Set text color to the desired blue */
+}
   
   .table-container {
     display: flex;
@@ -56,6 +56,14 @@
     font-family: 'Courier New', Courier, monospace;
     
   }
+  .search-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  
   
   table {
     width: 80%;
@@ -84,6 +92,7 @@
     text-align: center;
     margin-left: auto;
     margin-right:auto;
+    color: rgb(13, 82, 156);
   }
   
   .form-container label { 
@@ -93,21 +102,22 @@
   
   .form-container input {
     width: 300px;
-    height: 30px;
-    margin-bottom: 0px;
+    height: 20px;
+    margin-bottom: 1px;
     padding: 5px;
   }
   
   .form-container button {
-    width: 200px;
-    height: 40px;
-    background-color: #84d5f2;
-    color: white;
-    border: none;
+    background-color: #ffffff;
+    color: rgb(13, 82, 156);
+    border: 1px solid #84d5f2;
     border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
-    margin:10px;
     font-family: 'Courier New', Courier, monospace;
+    display: center;
+    justify-content: space-between;
+    margin-top: 20px;
   }
   
   .form-container button:hover {
@@ -124,11 +134,11 @@
     flex-direction: column;
     align-items: center;
   }
-  .dog-card {
-    display:flex;
+  .animal-card {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    border: 3px solid #61dafb;
+    border: 3px solid #84d5f2;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;
@@ -139,13 +149,13 @@
     background-color: white;
   }
   
-  .dog-card h2 {
+  .animal-card h2 {
     font-size: 24px;
     margin-bottom: 10px;
     font-family: 'Courier New', Courier, monospace;
   }
   
-  .dog-card img {
+  .animal-card img {
     width: 65%;
     height: 300px;
     object-fit: contain;
@@ -153,38 +163,43 @@
     margin-bottom: 10px;
   }
   
-  .dog-card p {
+  .animal-card p {
     margin-bottom: 5px;
     background-color: white;
     font-family: 'Courier New', Courier, monospace;
-    
-    
   }
   
-  .dog-card button {
-    background-color: #61dafb;
-    color: white;
-    border: none;
+  .animal-card.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .animal-card.button {
+    background-color: #ffffff;
+    color: rgb(13, 82, 156);
+    border: 1px solid #84d5f2;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
     font-family: 'Courier New', Courier, monospace;
   }
   
-  .dog-card button:hover {
+  .animal-card.button:hover {
     background-color: #45a8cb;
   }
-  .dog-card.edit-mode {
-    border: 3px solid #61dafb; /* Add a border to indicate edit mode */
+  
+  .animal-card.edit-mode {
+    border: 3px solid #61dafb;
   }
   
-  .dog-card.edit-mode input {
-    background-color: #f2f2f2; /* Change the background color of input fields in edit mode */
+  .animal-card.edit-mode input {
+    background-color: #f2f2f2;
   }
   
-  .dog-card.edit-mode button {
-    background-color: #f2f2f2; /* Change the background color of the edit button in edit mode */
-    color: #61dafb; /* Change the text color of the edit button in edit mode */
+  .animal-card.edit-mode button {
+    background-color: #f2f2f2;
+    color: #61dafb;
   }
   
   

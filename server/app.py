@@ -62,32 +62,34 @@ def all_animals():
 
     elif request.method == 'POST':
         json_data = request.get_json()
+        new_animal = Animal(
+            name=json_data.get('name'),
+            image=json_data.get('image'),
+            arrival=json_data.get('arrival'),
+            rescuer=json_data.get('rescuer'),  # Updated argument name
+            rescuedfrom=json_data.get('rescuedfrom'),  # Updated argument name
+            species=json_data.get('species'),
+            age=json_data.get('age'),
+            sex=json_data.get('sex'),
+            breed=json_data.get('breed'),
+            color=json_data.get('color'),
+            weight=json_data.get('weight'),
+            description=json_data.get('description'),
+            rabies=json_data.get('rabies'),
+            snap=json_data.get('snap'),  # Updated argument name
+            dhpp=json_data.get('dhpp'),  # Updated argument name
+            specialneeds=json_data.get('specialneeds'),  # Updated argument name
+            adoptionstatus=json_data.get('adoptionstatus'),  # Updated argument name
+            destination=json_data.get('destination'),
+            microchip=json_data.get('microchip'),
+            shelter_id=json_data.get('shelter_id'),
+            user_id=json_data.get('user_id')
+        )
+        db.session.add(new_animal)
+        db.session.commit()
 
-        try:
-            new_animal = Animal(
-                name=json_data.get('name'),
-                image=json_data.get('image'),
-                arrival_date=json_data.get('arrival_date'),
-                species=json_data.get('species'),
-                age=json_data.get('age'),
-                sex=json_data.get('sex'),
-                breed=json_data.get('breed'),
-                color=json_data.get('color'),
-                weight=json_data.get('weight'),
-                description=json_data.get('description'),
-                vaxstatus=json_data.get('vaxstatus'),
-                special_needs=json_data.get('special_needs'),
-                adoption_status=json_data.get('adoption_status'),
-                destination=json_data.get('destination'),
-                shelter_id=json_data.get('shelter_id'),
-                user_id=json_data.get('user_id')
-            )
-            db.session.add(new_animal)
-            db.session.commit()
-
-            return new_animal.to_dict(), 201
-        except:
-            return "Error adding the animal", 400
+        return new_animal.to_dict(), 201
+        
 
 @app.route('/animals/<int:id>', methods = ['GET', 'PATCH', 'DELETE'])
 def animals_by_id(id):
@@ -104,14 +106,17 @@ def animals_by_id(id):
         return{}, 204
     elif request.method == 'PATCH':
         json_data = request.get_json()
-
+        print(f"Received PATCH request with data: {json_data}")
+    
         for field in json_data: 
-            setattr(animal, field, json_data[field])
-        
+            if field != "shelter":
+                print(f"Updating field {field} with value {json_data[field]}")
+                setattr(animal, field, json_data[field])
+
         db.session.add(animal)
         db.session.commit()
 
-        return animal.to_dict(), 200
+    return animal.to_dict(), 200
 
 @app.route('/shelters', methods = ['GET', 'POST'])
 def all_shelters ():
@@ -129,10 +134,10 @@ def all_shelters ():
             new_shelter = Shelter(
                 user_id = json_data.get('user_id'),
                 name=json_data.get('name'),
-                owner_name = json_data.get('owner_name'),
+                owner = json_data.get('owner'),
                 address = json_data.get('address'),
                 email = json_data.get('email'),
-                phone_number = json_data.get('phone_number'),
+                phone = json_data.get('phone'),
                 about = json_data.get('about')
             )
             db.session.add(new_shelter)
@@ -142,25 +147,25 @@ def all_shelters ():
         except:
             return "Error adding new shelter", 400
 
-@app.route('/shelters/<int:id>', methods = ['GET', 'PATCH', 'DELETE'])
+@app.route('/shelters/<int:id>', methods=['GET', 'PATCH', 'DELETE'])
 def shelters_by_id(id):
     shelter = Shelter.query.filter(Shelter.id == id).first()
 
-    if shelter is None: 
+    if shelter is None:
         return {'error': "Shelter not found"}, 404
+
     if request.method == 'GET':
         return shelter.to_dict(), 200
-    elif request.method == 'DELETE': 
+    elif request.method == 'DELETE':
         db.session.delete(shelter)
         db.session.commit()
-        return{}, 204
+        return {}, 204
     elif request.method == 'PATCH':
         json_data = request.get_json()
 
-        for field in json_data: 
-            setattr(shelter, field, json_data[field])
-        
-        db.session.add(shelter)
+        for field in json_data:
+            setattr(shelter, field, json_data.get(field))
+
         db.session.commit()
 
         return shelter.to_dict(), 200

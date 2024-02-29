@@ -7,22 +7,29 @@ import logo from './FostrLogo.png';
 function NavBar() {
   return (
     <div className="navbar-wrapper">
-      <img src={logo} className="App-logo" alt="Fostr" />
+      <NavLink to="/animals">
+        <img src={logo} className="App-logo" alt="Fostr" />
+      </NavLink>
       <nav>
         <ul className="navbar-list">
           <li>
-            <NavLink exact = "true" to="/" className="nav-link">
+            <NavLink to="/animals" className="nav-link">
               Animal Information
             </NavLink>
           </li>
           <li>
-            <NavLink exact = "true" to="/add-animal" className="nav-link">
+            <NavLink to="/add-animal" className="nav-link">
               Add a New Animal
             </NavLink>
           </li>
           <li>
-            <NavLink exact = "true" to="/fostr-friends" className="nav-link">
-              Fostr Friends
+            <NavLink to="/shelters" className="nav-link">
+              Shelters
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/add-shelter" className="nav-link">
+              Add a New Shelter
             </NavLink>
           </li>
         </ul>

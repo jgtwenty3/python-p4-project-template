@@ -1,8 +1,8 @@
-"""initial
+"""simple
 
-Revision ID: 9925dd3aceff
+Revision ID: c9c04dd300d0
 Revises: 
-Create Date: 2024-02-23 12:33:42.491767
+Create Date: 2024-02-28 19:27:18.830191
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9925dd3aceff'
+revision = 'c9c04dd300d0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,9 +22,9 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=50), nullable=False),
     sa.Column('_password_hash', sa.String(length=100), nullable=False),
-    sa.Column('user_type', sa.String(length=10), nullable=False),
+    sa.Column('usertype', sa.String(length=10), nullable=False),
     sa.Column('email', sa.String(length=100), nullable=False),
-    sa.Column('phone_number', sa.String(length=15), nullable=False),
+    sa.Column('phone', sa.String(length=15), nullable=False),
     sa.Column('address', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('_password_hash'),
@@ -34,36 +34,41 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('owner_name', sa.String(), nullable=False),
+    sa.Column('owner', sa.String(), nullable=False),
     sa.Column('address', sa.String(), nullable=False),
     sa.Column('email', sa.String(), nullable=False),
-    sa.Column('phone_number', sa.String(), nullable=False),
+    sa.Column('phone', sa.String(), nullable=False),
     sa.Column('about', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_shelters_user_id_users')),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('address'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('name'),
-    sa.UniqueConstraint('phone_number')
+    sa.UniqueConstraint('phone')
     )
     op.create_table('animals',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('image', sa.String(), nullable=False),
-    sa.Column('arrival_date', sa.String(), nullable=True),
-    sa.Column('species', sa.String(), nullable=False),
+    sa.Column('image', sa.String(), nullable=True),
+    sa.Column('arrival', sa.String(), nullable=True),
+    sa.Column('rescuer', sa.String(), nullable=True),
+    sa.Column('rescuedfrom', sa.String(), nullable=True),
+    sa.Column('species', sa.String(), nullable=True),
     sa.Column('age', sa.Integer(), nullable=True),
     sa.Column('sex', sa.String(), nullable=True),
     sa.Column('breed', sa.String(), nullable=True),
     sa.Column('color', sa.String(), nullable=True),
     sa.Column('weight', sa.Integer(), nullable=True),
     sa.Column('description', sa.String(), nullable=True),
-    sa.Column('vaxstatus', sa.String(), nullable=True),
-    sa.Column('special_needs', sa.String(), nullable=True),
-    sa.Column('adoption_status', sa.String(), nullable=False),
+    sa.Column('rabies', sa.String(), nullable=True),
+    sa.Column('snap', sa.String(), nullable=True),
+    sa.Column('dhpp', sa.String(), nullable=True),
+    sa.Column('specialneeds', sa.String(), nullable=True),
+    sa.Column('adoptionstatus', sa.String(), nullable=True),
     sa.Column('destination', sa.String(), nullable=True),
-    sa.Column('shelter_id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('microchip', sa.String(), nullable=True),
+    sa.Column('shelter_id', sa.Integer(), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['shelter_id'], ['shelters.id'], name=op.f('fk_animals_shelter_id_shelters')),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_animals_user_id_users')),
     sa.PrimaryKeyConstraint('id')

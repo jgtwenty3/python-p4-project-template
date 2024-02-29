@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar.js";
 
-function FosterFriends() {
+function Fosters() {
   const [fosters, setFosters] = useState([]);
 
   useEffect(() => {
@@ -42,4 +42,4 @@ function FosterFriends() {
   );
 }
 
-export default FosterFriends;
+export default Fosters;
