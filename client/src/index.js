@@ -11,6 +11,8 @@ import "./index.css";
 import AddShelterForm from "./components/AddShelterForm.js";
 import Login from "./components/Login.js";
 import Signup from "./components/Signup.js";
+import AnimalFeed from "./components/AnimalFeed.js";
+import AboutFostr from "./components/AboutFostr.js";
 
 
 
@@ -45,6 +47,12 @@ export default function Launch() {
         </Route> 
         <Route path="/signup">
           <Signup/>
+        </Route> 
+        <Route path="/animal-feed">
+          <AnimalFeed/>
+        </Route> 
+        <Route path="/about-fostr">
+          <AboutFostr/>
         </Route> 
       </Switch>
     </BrowserRouter>

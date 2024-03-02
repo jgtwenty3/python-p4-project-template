@@ -20,7 +20,7 @@ if __name__ == '__main__':
             user = User(
                 username=fake.user_name(),
                 _password_hash=fake.password(),
-                usertype=rc(['admin', 'regular_user']),
+                usertype=rc(['admin', 'user']),
                 email=fake.email(),
                 phone=fake.phone_number(),
                 address=fake.address(),

@@ -31,7 +31,7 @@ def signup():
             return {'error': f'Missing required field: {field}'}, 400
 
     # Validate usertype
-    valid_usertypes = ['user', 'facility_owner']
+    valid_usertypes = ['user', 'admin']
     if json_data['usertype'] not in valid_usertypes:
         return {'error': f'Invalid usertype. Must be one of: {", ".join(valid_usertypes)}'}, 400
 
@@ -73,7 +73,7 @@ def login():
     # Update session with user_id
     session['user_id'] = user.id
 
-    return {'message': 'Login Successful'}, 200
+    return user.to_dict(), 200
 
 @app.route('/logout', methods = ['DELETE'])
 def logout():
