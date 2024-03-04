@@ -11,7 +11,7 @@ function AnimalFeed() {
     fetch('/animals')
     .then(res => res.json())
     .then(data => setAnimals(data))
-    .catch(error => console.log('error'))
+         .catch(error => console.log('error'))
   }, []);
 
   const handleAskAboutMe = (animalId) => {
@@ -22,7 +22,7 @@ function AnimalFeed() {
   return (
     <div className="animal-feed">
         <header>
-        <UserNavBar />
+        <UserNavBar/>
         </header>
       {animals.map((animal) => (
         <div key={animal.id} className="animal-card">
@@ -35,6 +35,7 @@ function AnimalFeed() {
             <button onClick={() => handleAskAboutMe(animal.id)}>
               Ask about me
             </button>
+            
           </div>
         </div>
       ))}

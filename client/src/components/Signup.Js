@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./App.css";
+import { NavLink } from "react-router-dom";
+import logo from './FostrLogo.png';
 
 
 function Signup() {
@@ -40,7 +42,10 @@ function Signup() {
   };
 
   return (
-    <div>
+    <div className="login-wrapper">
+      <NavLink to="/">
+          <img src={logo} className="App-logo" alt="Fostr" />
+        </NavLink>
       <h2>Signup</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form>
@@ -63,7 +68,7 @@ function Signup() {
           Usertype:
           <select value={usertype} onChange={(e) => setUsertype(e.target.value)}>
             <option value="user">New User</option>
-            <option value="admin">New Business Owner</option>
+            <option value="admin">New Rescue/Shelter</option>
           </select>
         </label>
         <br />

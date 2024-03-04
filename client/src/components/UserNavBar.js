@@ -33,11 +33,6 @@ function UserNavBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/shelters" activeClassName="active">
-            Shelters
-          </NavLink>
-        </li>
-        <li>
           <button onClick={handleLogout}>Logout</button>
         </li>
       </ul>

@@ -6,21 +6,32 @@ import NavBar from "./NavBar.js";
 function SheltersContainer(){
     const [searchQuery, setSearchQuery] = useState("");
     const [shelters, setShelters] = useState([]);
+    const [user, setUser] = useState(null);
+
 
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
       };
 
+      fetch('/check_session')
+        .then(res => res.json())
+        .then(data => setUser(data))
+        
+
       useEffect(()=> {
         fetch('/shelters')
         .then(res => res.json())
         .then(data => setShelters(data))
-        .catch(error => console.log('error'))
+        
       }, [])
 
     const filteredShelters = shelters.filter((shelter) =>
         shelter.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
+    if (!user || user.usertype !== 'admin') {
+    return <div>Access Denied</div>;
+  }
+
     
     return(
         <div>

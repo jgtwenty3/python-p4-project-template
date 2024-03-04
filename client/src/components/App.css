@@ -211,3 +211,27 @@ table {
 .animalcard-table td {
   padding: 8px;
 }
+
+.homecontainer {
+  position: relative;
+}
+
+/* ... (unchanged code) */
+
+.homecontainer {
+  position: relative;
+}
+
+.dog-image {
+  width: 60%;
+  height: 500px; /* Set the desired fixed height */
+  border: 2px solid #ddd; /* Border style and color */
+  padding: 10px; /* Adjust the padding as needed */
+  object-fit: cover; /* Maintain aspect ratio and cover container */
+  transition: transform 0.5s ease-in-out;
+}
+
+
+/* ... (unchanged code) */
+
+

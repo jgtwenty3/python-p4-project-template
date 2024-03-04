@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
+import { NavLink } from "react-router-dom";
+import logo from './FostrLogo.png';
 
 function Login() {
   const history = useHistory();
@@ -26,9 +28,9 @@ function Login() {
         if (userType === 'user') {
           history.push("/animal-feed");
         } else if (userType === 'admin') {
-          history.push("/animals"); // Change this to the AnimalContainer route
+          history.push("/animals"); 
         } else {
-          // Handle other user types or show an error
+          
           console.error('Invalid user type');
         }
       })
@@ -36,7 +38,10 @@ function Login() {
   };
 
   return (
-    <div className="login-wrapper"> {/* Added wrapper class */}
+    <div className="login-wrapper"> 
+      <NavLink to="/">
+          <img src={logo} className="App-logo" alt="Fostr" />
+        </NavLink>
       <h1>Login</h1>
       <label>
         Username:

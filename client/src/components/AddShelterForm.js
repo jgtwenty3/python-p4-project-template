@@ -9,6 +9,8 @@ function AddShelterForm(){
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [about, setAbout] = useState("");
+    const [user, setUser] = useState(null);
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -29,6 +31,14 @@ function AddShelterForm(){
           },
           body: JSON.stringify(newShelter),
         });
+        fetch('/check_session')
+          .then(res => res.json())
+          .then(data => setUser(data))
+          .catch(error => console.log('Error fetching user session'));
+
+          if (!user || user.usertype !== 'admin') {
+            return <div>Access Denied</div>;
+          }
       };
 
       return (

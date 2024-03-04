@@ -22,6 +22,8 @@ function AddAnimalForm() {
   const [adoptionstatus, setAdoptionstatus] = useState("");
   const [destination, setDestination] = useState("");
   const [microchip, setMicrochip] = useState("");
+  const [user, setUser] = useState(null);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -48,6 +50,11 @@ function AddAnimalForm() {
       microchip,
     };
 
+    fetch('/check_session')
+      .then(res => res.json())
+      .then(data => setUser(data))
+      .catch(error => console.log('Error fetching user session'));
+
     fetch("/animals", {
       method: "POST",
       headers: {
@@ -55,6 +62,10 @@ function AddAnimalForm() {
       },
       body: JSON.stringify(newAnimal),
     });
+
+    if (!user || user.usertype !== 'admin') {
+      return <div>Access Denied</div>;
+    }
   };
 
   return (

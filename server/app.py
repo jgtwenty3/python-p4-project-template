@@ -3,7 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from flask import Flask, request, session
+from flask import Flask, request, session, redirect, url_for
 from flask_bcrypt import Bcrypt
 # Local imports
 
@@ -11,12 +11,8 @@ from config import app, db, migrate, api
 # Add your model imports
 from models import db, User, Shelter, Animal
 
-
-
-
 # Views go here!
 
-@app.route('/')
 def home():
     return ''
 
@@ -70,26 +66,29 @@ def login():
     if not user.authenticate(json_data.get('password')):
         return {'error': 'Invalid password'}, 401
 
-    # Update session with user_id
+    # Update session with user_id and user_type
     session['user_id'] = user.id
+    session['user_type'] = user.usertype
 
-    return user.to_dict(), 200
+    return user.to_dict(), 200  
 
-@app.route('/logout', methods = ['DELETE'])
-def logout():
-    session.pop('user_id', None)
-    return {}, 204
 
-@app.route('/check_session')
+@app.route('/check_session', methods=['GET'])
 def check_session():
     user_id = session.get('user_id')
 
-    user = User.query.filter(User.id == user_id).first()
+    if user_id is not None:
+        user = User.query.get(user_id)
+        if user:
+            return user.to_dict(), 200
+    return {}, 401
 
-    if not user:
-        return{'error': 'unauthorized'}, 401
-    
-    return user.to_dict(),200
+@app.route('/logout', methods=['DELETE'])
+def logout():
+    session.pop('user_id', None)
+    session.pop('user_type', None)
+    return {}, 204
+
 
 @app.route('/animals', methods=['GET', 'POST'])
 def all_animals():
@@ -107,8 +106,8 @@ def all_animals():
             name=json_data.get('name'),
             image=json_data.get('image'),
             arrival=json_data.get('arrival'),
-            rescuer=json_data.get('rescuer'),  # Updated argument name
-            rescuedfrom=json_data.get('rescuedfrom'),  # Updated argument name
+            rescuer=json_data.get('rescuer'), 
+            rescuedfrom=json_data.get('rescuedfrom'), 
             species=json_data.get('species'),
             age=json_data.get('age'),
             sex=json_data.get('sex'),
@@ -117,10 +116,10 @@ def all_animals():
             weight=json_data.get('weight'),
             description=json_data.get('description'),
             rabies=json_data.get('rabies'),
-            snap=json_data.get('snap'),  # Updated argument name
-            dhpp=json_data.get('dhpp'),  # Updated argument name
-            specialneeds=json_data.get('specialneeds'),  # Updated argument name
-            adoptionstatus=json_data.get('adoptionstatus'),  # Updated argument name
+            snap=json_data.get('snap'),  
+            dhpp=json_data.get('dhpp'),  
+            specialneeds=json_data.get('specialneeds'), 
+            adoptionstatus=json_data.get('adoptionstatus'),
             destination=json_data.get('destination'),
             microchip=json_data.get('microchip'),
             shelter_id=json_data.get('shelter_id'),

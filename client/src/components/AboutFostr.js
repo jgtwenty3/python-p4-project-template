@@ -13,11 +13,11 @@ function AboutFostr() {
       <section>
         <h2>Fostr for Shelters and Rescues</h2>
         <h3>Effortless Animal Management</h3>
-        <p>Fostr provides a comprehensive platform for non-profits and shelters to manage their intake of cats and dogs seamlessly. Our intuitive interface allows organizations to streamline their processes, keep track of each animal's journey, and maintain a central hub for all their operational needs.</p>
+        <p>Fostr provides a comprehensive platform for rescues and shelters to manage their intake of cats and dogs seamlessly. Our intuitive interface allows organizations to streamline their processes, keep track of each animal's journey, and maintain a central hub for all their operational needs.</p>
         <h2>Connect with Fostrs</h2>
-        <p>Fostr facilitates easy communication between non-profits and the network of compassionate individuals ready to foster. By leveraging our platform, organizations can efficiently match animals with suitable foster homes, ensuring a smooth transition for the furry friends in their care.</p>
+        <p>Facilitate easy communication between your rescue or shelter and the network of compassionate individuals ready to foster. By leveraging our platform, organizations can efficiently match animals with suitable foster homes, ensuring a smooth transition for the furry friends in their care.</p>
         <h2>Enhanced Outreach</h2>
-        <p>Fostr extends the reach of non-profits and shelters by showcasing their available animals to potential foster families. Our platform is designed to amplify the visibility of organizations, making it easier for them to connect with individuals and other rescues and shelters passionate about making a difference.</p>
+        <p>Extend your reach showcasing their available animals to potential foster families. Our platform is designed to amplify the visibility of organizations, making it easier for them to connect with individuals and other rescues and shelters passionate about making a difference.</p>
       </section>
       <section>
         <h2>Fostr for me?</h2>

@@ -9,14 +9,25 @@ function ShelterCard(){
     const [editMode, setEditMode] = useState(false);
     const history = useHistory();
     const [updatedShelter, setUpdatedShelter] = useState({});
+    const [user, setUser] = useState(null);
+
 
     useEffect(()=> {
-        fetch(`/shelters/${id}`)
+      fetch('/check_session')
+        .then(res => res.json())
+        .then(data => setUser(data))
+        .catch(error => console.log('Error fetching user session'));
+      
+      fetch(`/shelters/${id}`)
         .then((res) => res.json())
         .then((data) => setShelter(data))
         .catch((error) =>console.log(error));
 
     }, [id]);
+
+    if (!user || user.usertype !== 'admin') {
+      return <div>Access Denied</div>;
+    }
 
     const handleEditClick = () => {
         setEditMode(true);
@@ -51,6 +62,7 @@ function ShelterCard(){
         })
         .catch((error) => console.log(error));
     };
+    
 
     const handleDelete = () => {
         fetch(`/shelters/${id}`, {

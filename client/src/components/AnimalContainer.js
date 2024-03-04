@@ -6,21 +6,34 @@ import NavBar from "./NavBar.js";
 function AnimalContainer() {
   const [searchQuery, setSearchQuery] = useState("");
   const [animals, setAnimals] = useState([]);
+  const [user, setUser] = useState(null);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  useEffect(()=> {
+  useEffect(() => {
+    
+    fetch('/check_session')
+      .then(res => res.json())
+      .then(data => setUser(data))
+      .catch(error => console.log('Error fetching user session'));
+    
+    
     fetch('/animals')
-    .then(res => res.json())
-    .then(data => setAnimals(data))
-    .catch(error => console.log('error'))
-  }, [])
+      .then(res => res.json())
+      .then(data => setAnimals(data))
+      .catch(error => console.log('Error fetching animals'));
+  }, []);
 
   const filteredAnimals = animals.filter((animal) =>
     animal.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Access control
+  if (!user || user.usertype !== 'admin') {
+    return <div>Access Denied</div>;
+  }
 
   return (
     <div>
