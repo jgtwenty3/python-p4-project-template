@@ -52,7 +52,7 @@ function NavBar() {
             </NavLink>
           </li>
           <li>
-            <button className="logout-button" onClick={handleLogout}>
+            <button onClick={handleLogout}>
               Logout
             </button>
           </li>

@@ -7,19 +7,35 @@ function AnimalContainer() {
   const [searchQuery, setSearchQuery] = useState("");
   const [animals, setAnimals] = useState([]);
   const [user, setUser] = useState(null);
+  const [filterStatus, setFilterStatus] = useState("all");
+  const [sortField, setSortField] = useState("name");
+  const [sortOrder, setSortOrder] = useState("asc");
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
+  const handleFilterChange = (e) => {
+    setFilterStatus(e.target.value);
+  };
+
+  const handleSortChange = (field) => {
+    if (sortField === field) {
+      // Toggle sort order if clicking the same field
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      // Set new sort field and default to ascending order
+      setSortField(field);
+      setSortOrder("asc");
+    }
+  };
+
   useEffect(() => {
-    
     fetch('/check_session')
       .then(res => res.json())
       .then(data => setUser(data))
       .catch(error => console.log('Error fetching user session'));
-    
-    
+
     fetch('/animals')
       .then(res => res.json())
       .then(data => setAnimals(data))
@@ -29,6 +45,26 @@ function AnimalContainer() {
   const filteredAnimals = animals.filter((animal) =>
     animal.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const filteredAndSortedAnimals = filteredAnimals.filter((animal) => {
+    if (filterStatus === "all") {
+      return true; // Show all animals
+    } else {
+      return animal.adoptionstatus.toLowerCase() === filterStatus.toLowerCase(); // Filter based on adoption status
+    }
+  });
+
+  // Apply sorting based on sortField and sortOrder
+  const sortedAnimals = [...filteredAndSortedAnimals].sort((a, b) => {
+    const aValue = a[sortField];
+    const bValue = b[sortField];
+
+    if (sortOrder === "asc") {
+      return aValue < bValue ? -1 : 1;
+    } else {
+      return aValue > bValue ? -1 : 1;
+    }
+  });
 
   // Access control
   if (!user || user.usertype !== 'admin') {
@@ -40,14 +76,29 @@ function AnimalContainer() {
       <header>
         <NavBar />
       </header>
-      <input
-        type="text"
-        placeholder="Search by name..."
-        value={searchQuery}
-        onChange={handleSearchChange}
-        className="search-input"
-      />
-      <table className = "animal-table"> 
+      <div className="filter-sort-container">
+        <input
+          type="text"
+          placeholder="Search by name..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className="search-input"
+        />
+        <select value={filterStatus} onChange={handleFilterChange}>
+          <option value="all">All</option>
+          <option value="available">Available</option>
+          <option value="Fostr'd">Fostr'd</option>
+          <option value="adopted">Adopted</option>
+        </select>
+        <div className="sort-options">
+          <span>Sort By: </span>
+          <span onClick={() => handleSortChange("name")}>Name</span>
+          <span onClick={() => handleSortChange("arrival")}>Arrival Date</span>
+          <span onClick={() => handleSortChange("age")}>Age</span>
+          {/* Add more sorting options based on your fields */}
+        </div>
+      </div>
+      <table className="animal-table">
         <thead>
           <tr className="table-row">
             <th>Name</th>
@@ -65,12 +116,9 @@ function AnimalContainer() {
             <th>Microchip Number</th>
           </tr>
         </thead>
-        <tbody className = "animal-table-body">
-          {filteredAnimals.map((animal) => (
-            <tr
-              className="table-row"
-              key={animal.id}
-            >
+        <tbody>
+          {sortedAnimals.map((animal) => (
+            <tr key={animal.id}>
               <td>
                 <NavLink to={`/animals/${animal.id}`}>{animal.name}</NavLink>
               </td>

@@ -13,14 +13,14 @@
 }
 
 .App-header {
-  background-color: #ffffff;
+  background-color: #f7f7f7;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #f7f7f7;
 }
 
 .App-link {
@@ -43,7 +43,7 @@
 }
 
 .navbar-item {
-  background-color: white;
+  background-color: #f7f7f7;
   padding: 10px 20px;
   border-radius: 20px;
   color: #84d5f2;
@@ -56,6 +56,38 @@
   height: 100vh;
   margin-top: 100px;
   font-family: 'Courier New', Courier, monospace;
+  background-color: #f7f7f7
+}
+.animal-table{
+  .table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 100px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f7f7f7; /* Change this color to your preference */
+  }
+  
+  .search-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .table-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #84d5f2; /* Adjust this color as needed */
+    font-family: 'Courier New', Courier, monospace;
+  }
 }
 
 .search-input {
@@ -106,7 +138,7 @@ table {
 }
 
 .form-container button {
-  background-color: #ffffff;
+  background-color: #f7f7f7;
   color: rgb(13, 82, 156);
   border: 1px solid #84d5f2;
   border-radius: 5px;
@@ -145,7 +177,7 @@ table {
   margin-left: 100px;
   margin-right: 100px;
   font-family: 'Courier New', Courier, monospace;
-  background-color: white;
+  background-color: #f7f7f7;
 }
 
 .animal-card h2 {
@@ -164,7 +196,7 @@ table {
 
 .animal-card p {
   margin-bottom: 5px;
-  background-color: white;
+  background-color: #f7f7f7;
   font-family: 'Courier New', Courier, monospace;
   text-align: center; /* Add this line to center-align the text */
 }
@@ -177,7 +209,7 @@ table {
 }
 
 .animal-card.button {
-  background-color: #ffffff;
+  background-color: #f7f7f7;
   color: rgb(13, 82, 156);
   border: 1px solid #84d5f2;
   border-radius: 5px;
@@ -195,11 +227,11 @@ table {
 }
 
 .animal-card.edit-mode input {
-  background-color: #f2f2f2;
+  background-color: #f7f7f7;
 }
 
 .animal-card.edit-mode button {
-  background-color: #f2f2f2;
+  background-color: #f7f7f7;
   color: #61dafb;
 }
 
@@ -232,6 +264,57 @@ table {
 }
 
 
-/* ... (unchanged code) */
+.about-fostr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  font-family: 'Courier New', Courier, monospace;
+  max-width: 800px; /* Adjust the max-width based on your preference */
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  color: rgb(13, 82, 156);
+}
 
+.about-fostr section {
+  margin-bottom: 30px; /* Add some space between sections */
+}
 
+.about-fostr h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.about-fostr h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.about-fostr p {
+  margin-bottom: 15px;
+}
+
+.about-fostr img {
+  width: 100%;
+  max-width: 500px; /* Adjust the max-width based on your preference */
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.about-fostr .nav-link {
+  background-color: #f7f7f7;
+  color: rgb(13, 82, 156);
+  border: 1px solid #84d5f2;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.about-fostr .nav-link:hover {
+  background-color: #45a8cb;
+}
